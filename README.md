@@ -1,8 +1,10 @@
-# Hs Tumblr Associations
+# Tumblr Associations
 
 ## Instructions
 
 You've been contracted as a back-end developer for Tumblr, the world's most popular blogging platform. They're migrating to a Sinatra application and need your help setting up the schema. 
+
+Follow along with the instructions below - run `learn` to check your work. 
 
 ### Step 1 - Models
 
@@ -11,6 +13,8 @@ Create three models - User, Post, and Comment. A post belongs to a user and has 
 ### Step 2 - All About That Database
 
 Create three migrations to create a table for users, posts, and comments. Users should have two columns, `username` and `email`. Posts should have `title`, `content`, and `user_id`, because a post belongs to a user. Comments should have `content`, `user_id`, and `post_id`. 
+
+NOTE: Once you've created your migrations, run `rake db:migrate SINATRA_ENV=test` to migrate your database for the test environment. 
 
 ## Bonus
 

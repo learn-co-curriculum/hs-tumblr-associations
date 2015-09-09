@@ -25,6 +25,7 @@ RSpec.configure do |config|
 
   config.order = 'default'
   # config.fail_fast = 'true'
+  ActiveRecord::Base.logger = nil
 
 end
 
