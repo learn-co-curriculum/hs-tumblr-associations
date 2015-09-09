@@ -24,6 +24,8 @@ RSpec.configure do |config|
   end
 
   config.order = 'default'
+  # config.fail_fast = 'true'
+
 end
 
 def app
