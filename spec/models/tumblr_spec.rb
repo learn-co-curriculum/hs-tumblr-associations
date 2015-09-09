@@ -57,51 +57,51 @@ describe "Tumblr" do
 
 		describe "User" do
 
-			before do
-				user = User.create(:username => "taylorswift", :email => "taylor@taylorswift.com")
+			before(:all) do
+				@user = User.create(:username => "taylorswift", :email => "taylor@taylorswift.com")
 			end
 	
 			it "has many posts" do
-				post = Post.create(:title => "Hello", :content => "World", :user => user)
-				expect(user.posts).to match_array(Post.all)
+				post = Post.create(:title => "Hello", :content => "World", :user => @user)
+				expect(@user.posts).to match_array(Post.all)
 			end
 
 			it "has many comments" do
-				comment = Comment.create(:user => user, :content => "First!!!")
-				expect(user.comments).to match_array(Comment.all)
+				comment = Comment.create(:user => @user, :content => "First!!!")
+				expect(@user.comments).to match_array(Comment.all)
 			end
 		end
 
 		describe "Post" do
 			before do
-				post = Post.create(:title => "Hello", :content => "World")
+				@post = Post.create(:title => "Hello", :content => "World")
 			end
 
 			it "belongs to a user" do
 				user = User.create(:username => "taylorswift", :email => "taylor@taylorswift.com")
-				post.update(:user => user)
-				expect(post.user).to eq(user)
+				@post.update(:user => user)
+				expect(@post.user).to eq(user)
 			end
 
 			it "has many comments" do
-				Comment.create(:post => post, :content => "First!!!")
-				expect(post.comments).to match_array(Comment.all)
+				Comment.create(:post => @post, :content => "First!!!")
+				expect(@post.comments).to match_array(Comment.all)
 			end
 		end
 
 		describe "Comment" do
 			before do
-				user = User.create(:username => "taylorswift", :email => "taylor@taylorswift.com")
-				post = Post.create(:title => "Hello", :content => "World", :user => user)
-				comment = Comment.create(:content => "First!!", :user => user, :post => post)
+				@user = User.create(:username => "taylorswift", :email => "taylor@taylorswift.com")
+				@post = Post.create(:title => "Hello", :content => "World", :user => @user)
+				@comment = Comment.create(:content => "First!!", :user => @user, :post => @post)
 			end
 
 			it "belongs to a user" do
-				expect(comment.user).to eq(user)
+				expect(@comment.user).to eq(@user)
 			end
 
 			it "belongs to a post" do
-				expect(comment.post).to eq(post)
+				expect(@comment.post).to eq(@post)
 			end
 		end
 	end
