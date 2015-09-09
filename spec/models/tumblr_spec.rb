@@ -16,7 +16,7 @@ describe "Tumblr" do
 
 
 	describe "User" do
-		before(:all) do
+		before do
 			@user = User.create(:username => "taylorswift", :email => "taylor@taylorswift.com")
 		end
 
@@ -30,7 +30,7 @@ describe "Tumblr" do
 	end
 
 	describe "Post" do
-		before(:all) do
+		before do
 			@post = Post.create(:title => "To Apple, Love Taylor", :content => "I write this to explain why I'll be holding back my album, 1989, from the new...")
 		end
 
@@ -44,7 +44,7 @@ describe "Tumblr" do
 	end
 
 	describe "Comment" do
-		before(:all) do
+		before do
 			@comment = Comment.create(:content => "First!")
 		end
 
@@ -56,7 +56,10 @@ describe "Tumblr" do
 	describe "ActiveRecord Associations" do
 
 		describe "User" do
-			user = User.create(:username => "taylorswift", :email => "taylor@taylorswift.com")
+
+			before do
+				user = User.create(:username => "taylorswift", :email => "taylor@taylorswift.com")
+			end
 	
 			it "has many posts" do
 				post = Post.create(:title => "Hello", :content => "World", :user => user)
@@ -70,7 +73,9 @@ describe "Tumblr" do
 		end
 
 		describe "Post" do
-			post = Post.create(:title => "Hello", :content => "World")
+			before do
+				post = Post.create(:title => "Hello", :content => "World")
+			end
 
 			it "belongs to a user" do
 				user = User.create(:username => "taylorswift", :email => "taylor@taylorswift.com")
@@ -85,9 +90,11 @@ describe "Tumblr" do
 		end
 
 		describe "Comment" do
-			user = User.create(:username => "taylorswift", :email => "taylor@taylorswift.com")
-			post = Post.create(:title => "Hello", :content => "World", :user => user)
-			comment = Comment.create(:content => "First!!", :user => user, :post => post)
+			before do
+				user = User.create(:username => "taylorswift", :email => "taylor@taylorswift.com")
+				post = Post.create(:title => "Hello", :content => "World", :user => user)
+				comment = Comment.create(:content => "First!!", :user => user, :post => post)
+			end
 
 			it "belongs to a user" do
 				expect(comment.user).to eq(user)
