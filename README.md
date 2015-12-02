@@ -21,3 +21,4 @@ NOTE: Once you've created your migrations, run `rake db:migrate SINATRA_ENV=test
 One of the cool features of Tumblr is the ability to tag posts - then we can see all the posts about funny cats or superman. A post can have many different tags, but a tag also has many posts. For this relationship to work, we need a join table - a table in between to keep track of the associations. Read more about join tables [here](http://guides.rubyonrails.org/association_basics.html#the-has-many-through-association). 
 
 Create two new models and two new tables - one to represent a tag, and one to represent the join table.
+<a href='https://learn.co/lessons/hs-tumblr-associations' data-visibility='hidden'>View this lesson on Learn.co</a>
